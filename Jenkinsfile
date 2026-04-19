@@ -25,8 +25,13 @@ pipeline {
                 sh 'npm ci'
             }
         }
-
-        stage('Build') {
+        stage('prisma Generate'){
+            steps{
+                sh'npx prisma generate'
+            }
+        }
+        
+       stage('Build') {
             steps {
                 echo '--- Next.js build ho raha hai ---'
                 sh 'npm run build'
