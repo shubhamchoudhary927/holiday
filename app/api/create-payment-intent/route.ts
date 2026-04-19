@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 import Stripe from "stripe";
 import { prisma } from "@/lib/prisma";
 
+
+
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: "2026-02-25.clover",
 });
@@ -21,6 +23,7 @@ export async function POST(request: Request) {
         { status: 404 }
       );
     }
+    
 
     const totalAmount = package_.price * people;
 
