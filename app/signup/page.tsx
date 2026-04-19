@@ -237,7 +237,7 @@ export default function SignupPage() {
           marginTop: "1.5rem",
           color: "#666" 
         }}>
-          Already have an account?{" "}
+          Already have an account{" "}
           <Link 
             href="/login"
             style={{
