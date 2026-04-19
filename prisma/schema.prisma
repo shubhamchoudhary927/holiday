@@ -29,6 +29,7 @@ model Booking {
   userId      String
   packageId   String
   travelDate  DateTime
+  totalAmount     Int 
   people      Int
   createdAt   DateTime @default(now())
 }
