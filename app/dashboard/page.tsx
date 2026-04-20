@@ -25,7 +25,7 @@ export default async function DashboardPage() {
       }}>
         <h2 style={{ color: "#333" }}>🚀 Dashboard</h2>
         <div style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
-          <span>Welcome, {session.user?.name || session.user?.email}!</span>
+          <span>Welcome, {session.user?.name || session.user?.email}</span>
           <Link href="/api/auth/signout">
             <button style={{
               padding: "0.5rem 1rem",
@@ -56,7 +56,7 @@ export default async function DashboardPage() {
           textAlign: "center"
         }}>
           <p style={{ color: "#666" }}>No bookings yet. Start your journey today!</p>
-          <Link href="/packages">
+          <Link href="/">
             <button style={{
               marginTop: "1rem",
               padding: "0.8rem 2rem",

@@ -8,8 +8,7 @@ export default function SignupPage() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    password: "",
-    confirmPassword: ""
+    password: ""
   });
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -26,12 +25,7 @@ export default function SignupPage() {
     setError("");
     setLoading(true);
 
-    // Password match check
-    if (formData.password !== formData.confirmPassword) {
-      setError("Passwords do not match");
-      setLoading(false);
-      return;
-    }
+    
 
     // API call
     try {
@@ -106,7 +100,7 @@ export default function SignupPage() {
               color: "#555",
               fontWeight: "500"
             }}>
-              Full Name
+               Name
             </label>
             <input
               name="name"
@@ -170,34 +164,6 @@ export default function SignupPage() {
               value={formData.password}
               onChange={handleChange}
               placeholder="Create a password"
-              style={{
-                width: "100%",
-                padding: "0.75rem",
-                border: "1px solid #ddd",
-                borderRadius: "8px",
-                fontSize: "1rem",
-                outline: "none",
-                transition: "border 0.3s"
-              }}
-              required
-            />
-          </div>
-
-          <div style={{ marginBottom: "2rem" }}>
-            <label style={{ 
-              display: "block", 
-              marginBottom: "0.5rem",
-              color: "#555",
-              fontWeight: "500"
-            }}>
-              Confirm Password
-            </label>
-            <input
-              name="confirmPassword"
-              type="password"
-              value={formData.confirmPassword}
-              onChange={handleChange}
-              placeholder="Confirm your password"
               style={{
                 width: "100%",
                 padding: "0.75rem",

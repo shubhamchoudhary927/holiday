@@ -7,29 +7,10 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-
 model User {
   id        String   @id @default(cuid())
   name      String
   email     String   @unique
   password  String
   createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-}
-
-model Package {
-  id          String   @id @default(cuid())
-  name        String
-  price       Int
-  createdAt   DateTime @default(now())
-}
-
-model Booking {
-  id          String   @id @default(cuid())
-  userId      String
-  packageId   String
-  travelDate  DateTime
-  totalAmount     Int 
-  people      Int
-  createdAt   DateTime @default(now())
 }

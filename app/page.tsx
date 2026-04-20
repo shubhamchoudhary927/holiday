@@ -26,9 +26,9 @@ export default function Home() {
 
         <div style={{ display: "flex", gap: "2rem", alignItems: "center" }}>
           <Link href="/" style={{ color: "#333", textDecoration: "none" }}>Home</Link>
-          <Link href="/packages" style={{ color: "#333", textDecoration: "none" }}>Packages</Link>
-          <Link href="/destinations" style={{ color: "#333", textDecoration: "none" }}>Destinations</Link>
-          <Link href="/contact" style={{ color: "#333", textDecoration: "none" }}>Contact</Link>
+          <Link href="/" style={{ color: "#333", textDecoration: "none" }}>Packages</Link>
+          <Link href="/" style={{ color: "#333", textDecoration: "none" }}>Destinations</Link>
+          <Link href="/" style={{ color: "#333", textDecoration: "none" }}>Contact</Link>
           <Link href="/login">
             <button style={{
               padding: "0.5rem 1.5rem",
@@ -157,16 +157,19 @@ export default function Home() {
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                   <span style={{ fontSize: "1.2rem", fontWeight: "bold", color: "#333" }}>{dest.price}</span>
                   <span style={{ color: "#999" }}>/व्यक्ति</span>
-                  <button style={{
-                    padding: "0.5rem 1rem",
-                    background: "#ff6b6b",
-                    color: "white",
-                    border: "none",
-                    borderRadius: "5px",
-                    cursor: "pointer"
-                  }}>
-                    बुक करें
-                  </button>
+                  <a
+  href={`upi://pay?pa=6398197892@pthdfc&pn=TripBook&am=${dest.price.replace("₹","")}&cu=INR&tn=Booking for ${dest.name}`}
+  style={{
+    padding: "0.5rem 1rem",
+    background: "#ff6b6b",
+    color: "white",
+    borderRadius: "5px",
+    textDecoration: "none",
+    display: "inline-block"
+  }}
+>
+  बुक करें
+</a>
                 </div>
               </div>
             </div>
@@ -297,7 +300,7 @@ export default function Home() {
       }}>
         <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
           <p style={{ fontSize: "1.2rem", marginBottom: "1rem" }}>TripBook - आपका भरोसेमंद यात्रा साथी</p>
-          <p style={{ color: "#999", marginBottom: "1rem" }}>© 2024 TripBook. All rights reserved.</p>
+          <p style={{ color: "#999", marginBottom: "1rem" }}>© 2026 TripBook. All rights reserved.</p>
           <div style={{ display: "flex", justifyContent: "center", gap: "2rem" }}>
             <Link href="/privacy" style={{ color: "#999", textDecoration: "none" }}>Privacy Policy</Link>
             <Link href="/terms" style={{ color: "#999", textDecoration: "none" }}>Terms of Service</Link>
