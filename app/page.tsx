@@ -158,7 +158,7 @@ export default function Home() {
                   <span style={{ fontSize: "1.2rem", fontWeight: "bold", color: "#333" }}>{dest.price}</span>
                   <span style={{ color: "#999" }}>/व्यक्ति</span>
                   <a
-  href={`upi://pay?pa=6398197892@pthdfc&pn=TripBook&am=${dest.price.replace("₹","")}&cu=INR&tn=Booking for ${dest.name}`}
+  href={`upi://pay?pa=Q624421997@ybl&pn=TripBook&am=${dest.price.replace("₹","")}&cu=INR&tn=Booking for ${dest.name}`}
   style={{
     padding: "0.5rem 1rem",
     background: "#ff6b6b",
