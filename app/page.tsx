@@ -121,7 +121,7 @@ export default function Home() {
           gap: "2rem"
         }}>
           {[
-            { name: "मनाली", state: "हिमाचल प्रदेश", price: "₹12,999", image: "🏔️", rating: "4.8" },
+            { name: "मनाली", state: "हिमाचल प्रदेश", price: "₹100", image: "🏔️", rating: "4.8" },
             { name: "गोवा", state: "गोवा", price: "₹15,999", image: "🏖️", rating: "4.7" },
             { name: "केरल", state: "केरल", price: "₹18,999", image: "🏝️", rating: "4.9" },
             { name: "जयपुर", state: "राजस्थान", price: "₹9,999", image: "🏰", rating: "4.6" },
