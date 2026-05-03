@@ -1,10 +1,22 @@
 "use client";
 
 import Link from "next/link";
+import { QRCodeCanvas } from "qrcode.react";
 
 export default function Home() {
+
+  const packages = [
+    { name: "मनाली", price: "₹10,999", image: "🏔️" },
+    { name: "गोवा", price: "₹15,999", image: "🏖️" },
+    { name: "केरल", price: "₹18,999", image: "🏝️" },
+    { name: "जयपुर", price: "₹9,999", image: "🏰" },
+    { name: "लद्दाख", price: "₹24,999", image: "⛰️" },
+    { name: "अंडमान", price: "₹21,999", image: "🏝️" }
+  ];
+
   return (
     <div>
+
       {/* Navbar */}
       <nav style={{
         position: "fixed",
@@ -18,92 +30,85 @@ export default function Home() {
         alignItems: "center",
         zIndex: 1000
       }}>
-        <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-          <span style={{ fontSize: "2rem" }}>✈️</span>
-          <span style={{ fontSize: "1.5rem", fontWeight: "bold", color: "#333" }}>
-            Trip<span style={{ color: "#ff6b6b" }}>Book</span>
-          </span>
-        </div>
+        <h2>✈️ TripBook</h2>
 
-        <div style={{ display: "flex", gap: "2rem", alignItems: "center" }}>
-          <Link href="/">Home</Link>
-          <Link href="/">Packages</Link>
-          <Link href="/">Destinations</Link>
-          <Link href="/">Contact</Link>
-
-          {/* FIXED BUTTON */}
-          <Link href="/login">
-            <button style={{
-              padding: "0.5rem 1.2rem",
-              background: "linear-gradient(135deg,#667eea,#764ba2)",
-              color: "white",
-              border: "none",
-              borderRadius: "25px",
-              cursor: "pointer",
-              fontWeight: "bold"
-            }}>
-              Login / Signup
-            </button>
-          </Link>
-        </div>
+        <Link href="/login">
+          <button style={{
+            padding: "0.5rem 1.2rem",
+            background: "linear-gradient(135deg,#667eea,#764ba2)",
+            color: "white",
+            border: "none",
+            borderRadius: "25px",
+            cursor: "pointer"
+          }}>
+            Login / Signup
+          </button>
+        </Link>
       </nav>
 
       {/* Hero */}
       <div style={{
         marginTop: "70px",
-        background: "linear-gradient(135deg, #667eea, #764ba2)",
+        background: "linear-gradient(135deg,#667eea,#764ba2)",
         color: "white",
         padding: "5rem 2rem",
         textAlign: "center"
       }}>
         <h1>अपने सपनों की यात्रा बुक करें</h1>
-        <p>1000+ गंतव्य • Best Price</p>
+        <p>Best Travel Deals • Secure Payment</p>
       </div>
 
-      {/* Destinations */}
-      <div style={{ padding: "4rem 2rem", maxWidth: "1200px", margin: "0 auto" }}>
+      {/* Packages */}
+      <div style={{
+        padding: "4rem 2rem",
+        maxWidth: "1200px",
+        margin: "auto"
+      }}>
         <h2 style={{ textAlign: "center", marginBottom: "2rem" }}>
-          लोकप्रिय गंतव्य
+          लोकप्रिय पैकेज
         </h2>
 
         <div style={{
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(300px,1fr))",
+          gridTemplateColumns: "repeat(auto-fit,minmax(300px,1fr))",
           gap: "2rem"
         }}>
-          {[
-            { name: "मनाली", price: "₹100", image: "🏔️" },
-            { name: "गोवा", price: "₹15,999", image: "🏖️" },
-            { name: "केरल", price: "₹18,999", image: "🏝️" }
-          ].map((dest, i) => {
+          {packages.map((pkg, i) => {
 
-            // ✅ IMPORTANT FIX
-            const amount = dest.price.replace("₹", "").replace(/,/g, "");
+            const amount = pkg.price.replace("₹", "").replace(/,/g, "");
 
-            const upiLink = `upi://pay?pa=Q624421997@ybl&pn=TripBook&am=${amount}&cu=INR&tn=Booking for ${dest.name}`;
+            const upiLink = `upi://pay?pa=Q624421997@ybl&pn=TripBook&am=${amount}&cu=INR&tn=Booking for ${pkg.name}`;
 
             return (
               <div key={i} style={{
+                background: "white",
+                borderRadius: "12px",
                 padding: "1.5rem",
-                borderRadius: "10px",
-                boxShadow: "0 5px 15px rgba(0,0,0,0.1)",
-                textAlign: "center"
+                textAlign: "center",
+                boxShadow: "0 10px 25px rgba(0,0,0,0.1)"
               }}>
-                <div style={{ fontSize: "4rem" }}>{dest.image}</div>
+                <div style={{ fontSize: "4rem" }}>{pkg.image}</div>
 
-                <h3>{dest.name}</h3>
-                <p>{dest.price}</p>
+                <h3>{pkg.name}</h3>
+                <p style={{ fontWeight: "bold" }}>{pkg.price}</p>
 
-                {/* ✅ UPI BUTTON */}
+                {/* QR CODE */}
+                <QRCodeCanvas value={upiLink} size={140} />
+
+                <p style={{ fontSize: "0.8rem", color: "#666" }}>
+                  Scan & Pay
+                </p>
+
+                {/* BUTTON */}
                 <a
                   href={upiLink}
                   style={{
                     display: "inline-block",
                     marginTop: "10px",
-                    padding: "0.6rem 1.2rem",
+                    padding: "0.6rem 1.5rem",
                     background: "#ff6b6b",
                     color: "white",
-                    borderRadius: "5px",
+                    borderRadius: "6px",
                     textDecoration: "none",
                     fontWeight: "bold"
                   }}
@@ -121,11 +126,12 @@ export default function Home() {
       <footer style={{
         background: "#333",
         color: "white",
-        padding: "2rem",
-        textAlign: "center"
+        textAlign: "center",
+        padding: "2rem"
       }}>
-        <p>© 2026 TripBook</p>
+        <p>© 2026 TripBook | Secure UPI Payments</p>
       </footer>
+
     </div>
   );
 }
